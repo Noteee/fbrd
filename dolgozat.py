@@ -5,31 +5,37 @@ while True:
     except:
         print("AZ NEM EGY SZÁM !!!!!!!!!")
 pontszam = 0
-eredmenyseged = (pontszam / maxPoint) * 100
-otos = 80
-negyes = 70
-harmas = 60
-kettes = 40
-
-while True:
-    try:
-        pontszam += int(input("Adja meg a pontszámot vagy nyomjon meg egy betűt a végeredményhez"))
-    except:
-        szazalek = pontszam / maxPoint * 100
-        print(szazalek, end="")
-        print("%")
-        break
-
+otos = 80.0
+negyes = 70.0
+harmas = 60.0
+kettes = 40.0
+breaker = 0
 def hanyas():
-    if otos < pontszam:
+    if otos < szazalek:
         print("Ötös")
-    elif negyes < pontszam >= otos:
+    elif negyes < szazalek >= otos:
         print("Négyes")
-    elif harmas < pontszam >= negyes:
+    elif harmas < szazalek >= negyes:
         print("Hármas")
-    elif kettes < pontszam >= harmas:
+    elif kettes < szazalek >= harmas:
         print("Kettes")
-    elif kettes >= pontszam:
+    elif kettes >= szazalek:
         print("Egyes")
 
-hanyas()
+while breaker == 0:
+    pontszam = 0
+    while True:
+        try:
+            pontszam += float(input("Adja meg a pontszámot vagy nyomjon meg egy betűt a végeredményhez"))
+        except:
+            szazalek = pontszam / maxPoint * 100
+            print(szazalek, end="")
+            print("%")
+            hanyas()
+            again = input("again? y or n")
+            if again == "y":
+                break
+            else:
+                breaker = 1
+
+
